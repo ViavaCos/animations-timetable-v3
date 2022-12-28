@@ -2,6 +2,8 @@
 
 This template should help get you started developing with Vue 3 in Vite.
 
+通过默认创建的`vue3.0` + `vite` + `typescript` 模板项目为基础进行coding
+
 ## ref()
 一般用于定义简单/复杂数据类型的响应式(`Proxy`)变量，也可用于复杂数据类型
 ```javascript
@@ -105,4 +107,21 @@ const handleClick = () => {
 const list = ref([])
 // 值会随着list的长度变化而变化，若未变化则直接读取缓存的值
 const len = computed(() => list.length)
+```
+
+## 定义通过方法调用的组件
+1. 以dialog举例，文件目录结构如下
+```bash
+dialog
+├── CustomDialog.vue # 组件模板，可直接通过引入组件的形式使用
+├── index.d.ts # 组件类型声明，暂时未用到（一用就报错。。。）
+└── index.ts # 通过方法注册组件的核心文件
+```
+2. 在`index.ts`中抛出组件注册的方法
+```markdown
+① 新建一个载体dom
+② 通过`createApp`实例化组件
+③ 将注册的组件挂载到载体上
+④ 将载体挂载到`document.body`上
+⑤ 抛出组件实例 和 取消挂载的方法
 ```
