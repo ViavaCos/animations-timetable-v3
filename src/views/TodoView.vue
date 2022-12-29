@@ -58,10 +58,6 @@ const handleClickEdit = (id: number) => {
   // 浅拷贝，断开复杂数据的内存地址引用
   currentEdit.value = { ...targetEdit };
 };
-// 取消编辑
-const handleCancel = () => {
-  editDialogVisible.value = false;
-};
 // 确定编辑
 const handleConfirm = () => {
   editDialogVisible.value = false;
@@ -109,9 +105,8 @@ const handleConfirm = () => {
   </div>
 
   <CustomDialog
-    :visible="editDialogVisible"
+    v-model:visible="editDialogVisible"
     title="这是标题"
-    @cancel="handleCancel"
     @confirm="handleConfirm"
   >
     <div class="custom-dialog-content">

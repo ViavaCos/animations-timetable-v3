@@ -29,12 +29,14 @@ const props = defineProps<{
 const emit = defineEmits<{
   (event: "cancel"): void; // 取消
   (event: "confirm"): void; // 确定
+  (event: "update:visible", visible: boolean): void; // 确定
 }>();
 
 // 取消
 const handleCancel = () => {
   typeof props.closeDialog === "function" && props.closeDialog(false);
   emit("cancel");
+  emit("update:visible", false);
 };
 
 // 确定
