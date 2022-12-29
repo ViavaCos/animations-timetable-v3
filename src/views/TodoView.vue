@@ -4,6 +4,7 @@ import { ref, computed } from "vue";
 import TodoItemVue from "@/components/TodoItem.vue";
 import CustomDialog from "@/components/dialog/CustomDialog.vue";
 import initDialog from "@/components/dialog";
+import initToast from "@/components/toast";
 
 type todoItemType = {
   id: number;
@@ -43,6 +44,7 @@ const handleDel = (id: number) => {
         if (index < 0) return alert("Cannot find current item.");
 
         todoList.value.splice(index, 1);
+        initToast({ message: "删除成功" });
       }
 
       dialog.close();
